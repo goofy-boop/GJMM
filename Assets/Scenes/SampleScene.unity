@@ -298,7 +298,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -703,6 +703,8 @@ MonoBehaviour:
   maskPlayer:
     serializedVersion: 2
     m_Bits: 8
+  romero: {fileID: 780654785}
+  bouger: {fileID: 1255419074}
 --- !u!1 &979127354
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,8 +729,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979127354}
   serializedVersion: 2
+<<<<<<< HEAD
+  m_LocalRotation: {x: -0.11382119, y: -0.027950127, z: 0.032483973, w: 0.99257666}
+  m_LocalPosition: {x: -0.026, y: 0.136, z: 0.327}
+=======
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
+>>>>>>> parent of e30376d (Ajoute de Romero !!!)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

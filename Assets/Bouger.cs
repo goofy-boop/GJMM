@@ -19,4 +19,9 @@ public class Bouger : MonoBehaviour
 
         controller.Move(direction);
     }
+
+    public void TourneADirectionQueBouge(Transform romero)
+    {
+        romero.rotation = Quaternion.LookRotation(direction);
+    }
 }
