@@ -8,6 +8,10 @@ public class Bouger : MonoBehaviour
 
     public CharacterController controller;
 
+    public Animator animator;
+
+    bool bouge;
+
     Vector3 direction;
 
     private void Update()
@@ -18,6 +22,9 @@ public class Bouger : MonoBehaviour
         direction = transform.forward * z + transform.right * x;
 
         controller.Move(direction);
+
+        bouge = x != 0 || z != 0;
+        animator.SetBool("Bouge", bouge);
     }
 
     public void TourneADirectionQueBouge(Transform romero)
