@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public interface IInteractable
 {
@@ -10,18 +11,29 @@ public interface IInteractable
 public class Interaction : MonoBehaviour
 {
     public float limiteDistance = 5f;
+    public TMP_Text detecteur;
+
+    private void Awake()
+    {
+        detecteur.gameObject.SetActive(false);
+    }
 
     private void Update()
     {
         Ray r = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(r, out RaycastHit hit, limiteDistance))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (hit.collider.gameObject.TryGetComponent(out IInteractable interactable))
             {
-                if (hit.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+                detecteur.gameObject.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    interactObj.Interact();
+                    interactable.Interact();
                 }
+            }
+            else
+            {
+                detecteur.gameObject.SetActive(false);
             }
         }
     }
