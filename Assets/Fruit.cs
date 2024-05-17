@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour, IInteractable
 {
+    public GameManager manager;
+
     public void Interact()
     {
+        manager.RedemarrerLeCompteAReboure();
         Destroy(gameObject);
     }
 }

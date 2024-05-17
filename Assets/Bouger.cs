@@ -10,9 +10,16 @@ public class Bouger : MonoBehaviour
 
     public Animator animator;
 
+    public AudioSource audio;
+
     bool bouge;
 
     Vector3 direction;
+
+    private void Awake()
+    {
+        audio.gameObject.SetActive(false);
+    }
 
     private void Update()
     {
@@ -25,6 +32,15 @@ public class Bouger : MonoBehaviour
 
         bouge = x != 0 || z != 0;
         animator.SetBool("Bouge", bouge);
+
+        if (bouge)
+        {
+            audio.gameObject.SetActive(true);
+        }
+        else
+        {
+            audio.gameObject.SetActive(false);
+        }
     }
 
     public void TourneADirectionQueBouge(Transform romero)
