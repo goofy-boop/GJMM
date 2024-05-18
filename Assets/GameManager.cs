@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,11 +14,14 @@ public class GameManager : MonoBehaviour
 
     private float tempsMax;
 
+    float time;
+
 
     private void Awake()
     {
         tempsMax = tempsRestant;
         ecranDeMort.SetActive(false);
+        time = Time.timeScale;
     }
 
     private void Update()
@@ -42,5 +46,17 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         ecranDeMort.SetActive(true);
         Time.timeScale = 0.0f;
+    }
+
+    public void Jouer()
+    {
+        SceneManager.LoadScene("Jeu");
+        Time.timeScale = time;
+    }
+
+    public void RetournerAuMenuDeDepart()
+    {
+        SceneManager.LoadScene("MenuDepart");
+        Time.timeScale = time;
     }
 }
