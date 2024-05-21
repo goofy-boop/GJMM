@@ -50,13 +50,13 @@ public class GameManager : MonoBehaviour
 
     public void Jouer()
     {
-        SceneManager.LoadScene("Jeu");
         Time.timeScale = time;
+        SceneManager.LoadScene("Jeu");
     }
 
     public void RetournerAuMenuDeDepart()
     {
-        SceneManager.LoadScene("MenuDepart");
         Time.timeScale = time;
+        SceneManager.LoadScene("MenuDepart");
     }
 }
