@@ -8,8 +8,6 @@ public class Bouger : MonoBehaviour
 
     public CharacterController controlleur;
 
-    public Animator animator;
-
     public AudioSource audio;
 
     public float gravity = -9.18f;
@@ -55,7 +53,6 @@ public class Bouger : MonoBehaviour
 
 
         bouge = x != 0 || z != 0;
-        animator.SetBool("Bouge", bouge);
 
         if (bouge)
         {
@@ -65,10 +62,5 @@ public class Bouger : MonoBehaviour
         {
             audio.gameObject.SetActive(false);
         }
-    }
-
-    public void TourneADirectionQueBouge(Transform romero)
-    {
-        romero.rotation = Quaternion.LookRotation(direction);
     }
 }
