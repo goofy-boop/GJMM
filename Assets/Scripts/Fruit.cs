@@ -11,6 +11,6 @@ public class Fruit : MonoBehaviour, IInteractable
     {
         AudioSource.PlayClipAtPoint(audio.clip, transform.position, 1f);
         manager.RedemarrerLeCompteAReboure();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

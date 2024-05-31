@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class Carte : MonoBehaviour
 {
-    private void Update()
+    public GameObject carte;
+
+    private void Awake()
+    {
+        carte.SetActive(false);
+    }
+
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (gameObject.activeSelf != true)
+            if (carte.activeSelf != true)
             {
-                gameObject.SetActive(true);
+                carte.SetActive(true);
             }
             else
             {
-                gameObject.SetActive(false);
+                carte.SetActive(false);
             }
         }
     }
