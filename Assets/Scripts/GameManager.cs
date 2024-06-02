@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public TMP_Text compteARebour;
-
     public float tempsRestant = 30;
 
     public GameObject ecranDeMort;
@@ -16,28 +14,54 @@ public class GameManager : MonoBehaviour
 
     float time;
 
+    public static float fruitsManges = 0f;
+
+    public static bool dynamite = false;
+
+    public GameObject bomb;
+
 
     private void Awake()
     {
         tempsMax = tempsRestant;
         ecranDeMort.SetActive(false);
         time = Time.timeScale;
+        dynamite = false;
+        fruitsManges = 0f;
     }
 
     private void Update()
     {
         tempsRestant -= 1 * Time.deltaTime;
-        compteARebour.text = Mathf.RoundToInt(tempsRestant).ToString();
 
         if (tempsRestant <= 0f)
         {
             Perdre();
+        }
+
+        if (fruitsManges >= 10f)
+        {
+            dynamite = true;
+        }
+
+        if (dynamite == true)
+        {
+            bomb.SetActive(true);
+        }
+        else
+        {
+            bomb.SetActive(false);
         }
     }
 
     public void RedemarrerLeCompteAReboure()
     {
         tempsRestant = tempsMax;
+    }
+
+    public void Mange()
+    {
+        fruitsManges += 1f;
     }
 
     public void Perdre()

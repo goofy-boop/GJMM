@@ -15,4 +15,9 @@ public class ManagementDeScenes : MonoBehaviour
         Application.Quit();
         Debug.Log("Quitte!");
     }
+
+    public void RetournerAuMenuDeDepart()
+    {
+        SceneManager.LoadScene("MenuDepart");
+    }
 }
