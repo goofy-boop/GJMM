@@ -9,6 +9,9 @@ public class Map : MonoBehaviour
     public float[] variétés;
 
     public float temps = 90f;
+
+    public GameObject blur;
+
     float tempsMax;
 
     // Start is called before the first frame update
@@ -26,7 +29,15 @@ public class Map : MonoBehaviour
         if (temps <= 0f)
         {
             animateur.SetFloat("VarDeMap", Random.Range(0, variétés.Length));
+            StartCoroutine(Blur());
             temps = tempsMax;
         }
+    }
+
+    IEnumerator Blur()
+    {
+        blur.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        blur.SetActive(false);
     }
 }

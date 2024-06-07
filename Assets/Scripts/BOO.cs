@@ -22,10 +22,16 @@ public class BOO : MonoBehaviour
 
         if (temps <= 0f)
         {
-            boo.SetActive(true);
             AudioSource.PlayClipAtPoint(audio, transform.position, 1f);
             temps = tempsMax;
-            boo.SetActive(false);
+            StartCoroutine(Monstre());
         }
+    }
+
+    IEnumerator Monstre()
+    {
+        boo.SetActive(true);
+        yield return new WaitForSeconds(2f * Time.deltaTime);
+        boo.SetActive(false);
     }
 }

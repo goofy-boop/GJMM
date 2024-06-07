@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject bomb;
 
+    public AudioClip indictionDynamite;
+
+    bool dIndique;
+
 
     private void Awake()
     {
@@ -28,6 +32,7 @@ public class GameManager : MonoBehaviour
         time = Time.timeScale;
         dynamite = false;
         fruitsManges = 0f;
+        dIndique = false;
     }
 
     private void Update()
@@ -42,6 +47,8 @@ public class GameManager : MonoBehaviour
         if (fruitsManges >= 10f)
         {
             dynamite = true;
+            StartCoroutine(IndicateurDynamite());
+            dIndique = true;
         }
 
         if (dynamite == true)
@@ -82,5 +89,19 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = time;
         SceneManager.LoadScene("MenuDepart");
+    }
+
+    IEnumerator IndicateurDynamite()
+    {
+        if (!dIndique)
+        {
+            AudioSource.PlayClipAtPoint(indictionDynamite, transform.position, 1f);
+            yield return new WaitForSeconds(500);
+        }
+        else
+        {
+            yield return new WaitForSeconds(500);
+        }
+        
     }
 }
