@@ -9,7 +9,9 @@ public class Porte : MonoBehaviour, IInteractable
     {
         if (GameManager.dynamite)
         {
-            SceneManager.LoadScene("MenuDepart");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("Win");
         }
         else
         {

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Screamer.unity
     guid: 7de10fa6c042a4d248b719ecc851cafc
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 2c2164a408baa4d0ea84a342f7b5d501
   m_configObjects: {}
