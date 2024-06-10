@@ -6,6 +6,8 @@ public class Carte : MonoBehaviour
 {
     public GameObject carte;
 
+    public AudioSource audio;
+
     private void Awake()
     {
         carte.SetActive(false);
@@ -15,6 +17,7 @@ public class Carte : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
+            audio.Play();
             if (carte.activeSelf != true)
             {
                 carte.SetActive(true);

@@ -12,6 +12,8 @@ public class Map : MonoBehaviour
 
     public GameObject blur;
 
+    public AudioSource audio;
+
     float tempsMax;
 
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class Map : MonoBehaviour
 
         if (temps <= 0f)
         {
+            audio.Play();
             animateur.SetFloat("VarDeMap", Random.Range(0, variétés.Length));
             StartCoroutine(Blur());
             temps = tempsMax;
