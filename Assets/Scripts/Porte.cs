@@ -7,7 +7,7 @@ public class Porte : MonoBehaviour, IInteractable
 {
     public void Interact()
     {
-        if (GameManager.dynamite)
+        if (GameManager.peutGagner)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

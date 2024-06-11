@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
 
     public AudioClip indictionDynamite;
 
+    public static bool peutGagner = false;
+
+    public GameObject bombEnPlace;
+
     bool dIndique;
 
 
@@ -33,6 +37,7 @@ public class GameManager : MonoBehaviour
         dynamite = false;
         fruitsManges = 0f;
         dIndique = false;
+        bombEnPlace.SetActive(false);
     }
 
     private void Update()
@@ -49,6 +54,10 @@ public class GameManager : MonoBehaviour
             dynamite = true;
             StartCoroutine(IndicateurDynamite());
             dIndique = true;
+        }
+        else
+        {
+            dynamite = false;
         }
 
         if (dynamite == true)
@@ -69,6 +78,13 @@ public class GameManager : MonoBehaviour
     public void Mange()
     {
         fruitsManges += 1f;
+    }
+
+    public void PretAGagner()
+    {
+        peutGagner = true;
+        bombEnPlace.SetActive(true);
+        fruitsManges = 0f;
     }
 
     public void Perdre()

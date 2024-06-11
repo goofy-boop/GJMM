@@ -31,7 +31,7 @@ public class BOO : MonoBehaviour
     IEnumerator Monstre()
     {
         boo.SetActive(true);
-        yield return new WaitForSeconds(2f * Time.deltaTime);
+        yield return new WaitForSeconds(4f * Time.deltaTime);
         boo.SetActive(false);
     }
 }
