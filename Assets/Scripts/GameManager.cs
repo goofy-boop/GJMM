@@ -26,7 +26,13 @@ public class GameManager : MonoBehaviour
 
     public GameObject bombEnPlace;
 
+    public TMP_Text itd, rdm;
+
     bool dIndique;
+
+    string itdDeb;
+
+    bool pg;
 
 
     private void Awake()
@@ -38,15 +44,21 @@ public class GameManager : MonoBehaviour
         fruitsManges = 0f;
         dIndique = false;
         bombEnPlace.SetActive(false);
+        itdDeb = itd.text;
+        Time.timeScale = time;
+        pg = false;
     }
 
     private void Update()
     {
-        tempsRestant -= 1 * Time.deltaTime;
-
-        if (tempsRestant <= 0f)
+        if (!pg)
         {
-            Perdre();
+            tempsRestant -= 1 * Time.deltaTime;
+
+            if (tempsRestant <= 0f)
+            {
+                Perdre();
+            }
         }
 
         if (fruitsManges >= 10f)
@@ -54,6 +66,8 @@ public class GameManager : MonoBehaviour
             dynamite = true;
             StartCoroutine(IndicateurDynamite());
             dIndique = true;
+            itd.gameObject.SetActive(true);
+            itd.text = itdDeb;
         }
         else
         {
@@ -85,6 +99,18 @@ public class GameManager : MonoBehaviour
         peutGagner = true;
         bombEnPlace.SetActive(true);
         fruitsManges = 0f;
+
+        itd.gameObject.SetActive(true);
+        float itdCd = 30f;
+
+        itdCd -= Time.deltaTime;
+        itd.text = Mathf.RoundToInt(itdCd).ToString();
+
+        if(itdCd <= 0)
+        {
+            rdm.text = "the bomb exploded. be faster.";
+            Perdre();
+        }
     }
 
     public void Perdre()
