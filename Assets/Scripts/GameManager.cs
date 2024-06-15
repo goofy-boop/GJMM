@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     bool pg;
 
+    float itdCd = 30f;
+
 
     private void Awake()
     {
@@ -57,6 +59,17 @@ public class GameManager : MonoBehaviour
 
             if (tempsRestant <= 0f)
             {
+                Perdre();
+            }
+        }
+        else
+        {
+            itdCd -= Time.deltaTime;
+            itd.text = Mathf.RoundToInt(itdCd).ToString();
+
+            if (itdCd <= 0)
+            {
+                rdm.text = "the bomb exploded. be faster.";
                 Perdre();
             }
         }
@@ -101,16 +114,7 @@ public class GameManager : MonoBehaviour
         fruitsManges = 0f;
 
         itd.gameObject.SetActive(true);
-        float itdCd = 30f;
-
-        itdCd -= Time.deltaTime;
-        itd.text = Mathf.RoundToInt(itdCd).ToString();
-
-        if(itdCd <= 0)
-        {
-            rdm.text = "the bomb exploded. be faster.";
-            Perdre();
-        }
+        pg = true;
     }
 
     public void Perdre()
