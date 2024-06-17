@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     float itdCd = 30f;
 
+    public GameObject cd;
+
 
     private void Awake()
     {
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            cd.SetActive(true);
             itdCd -= Time.deltaTime;
             itd.text = Mathf.RoundToInt(itdCd).ToString();
 
