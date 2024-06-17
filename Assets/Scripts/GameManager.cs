@@ -36,21 +36,22 @@ public class GameManager : MonoBehaviour
 
     float itdCd = 30f;
 
-    public GameObject cd;
+    public GameObject cd, flash;
 
 
     private void Awake()
     {
+        Time.timeScale = Time.timeScale;
+        time = Time.timeScale;
         tempsMax = tempsRestant;
         ecranDeMort.SetActive(false);
-        time = Time.timeScale;
         dynamite = false;
         fruitsManges = 0f;
         dIndique = false;
         bombEnPlace.SetActive(false);
         itdDeb = itd.text;
-        Time.timeScale = time;
         pg = false;
+        flash.SetActive(false);
     }
 
     private void Update()
@@ -67,6 +68,8 @@ public class GameManager : MonoBehaviour
         else
         {
             cd.SetActive(true);
+            StartCoroutine(Flash());
+
             itdCd -= Time.deltaTime;
             itd.text = Mathf.RoundToInt(itdCd).ToString();
 
@@ -152,5 +155,12 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(500);
         }
         
+    }
+
+    IEnumerator Flash()
+    {
+        flash.SetActive(true);
+        yield return new WaitForSeconds(2 * Time.deltaTime);
+        flash.SetActive(false);
     }
 }
