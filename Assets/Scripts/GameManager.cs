@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     bool pg;
 
-    float itdCd = 30f;
+    float itdCd = 34f;
 
     public GameObject cd, flash;
 
